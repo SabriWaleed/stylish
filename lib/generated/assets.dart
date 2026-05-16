@@ -22,9 +22,29 @@ class Assets {
   /// assets/fonts/Montserrat-SemiBold.ttf
   static const String assetsFontsMontserratSemiBold = "assets/fonts/Montserrat-SemiBold.ttf";
 
+  /// Assets for assetsImagesApple
+  /// assets/images/apple.png
+  static const String assetsImagesApple = "assets/images/apple.png";
+
+  /// Assets for assetsImagesFacebook
+  /// assets/images/facebook.png
+  static const String assetsImagesFacebook = "assets/images/facebook.png";
+
+  /// Assets for assetsImagesGoogle
+  /// assets/images/google.png
+  static const String assetsImagesGoogle = "assets/images/google.png";
+
+  /// Assets for assetsImagesLock
+  /// assets/images/lock.png
+  static const String assetsImagesLock = "assets/images/lock.png";
+
   /// Assets for assetsImagesLogo
   /// assets/images/logo.png
   static const String assetsImagesLogo = "assets/images/logo.png";
+
+  /// Assets for assetsImagesMail
+  /// assets/images/Mail.png
+  static const String assetsImagesMail = "assets/images/Mail.png";
 
   /// Assets for assetsImagesOnboarding1
   /// assets/images/onboarding1.png
@@ -37,5 +57,9 @@ class Assets {
   /// Assets for assetsImagesOnboarding3
   /// assets/images/onboarding3.png
   static const String assetsImagesOnboarding3 = "assets/images/onboarding3.png";
+
+  /// Assets for assetsImagesUser
+  /// assets/images/User.png
+  static const String assetsImagesUser = "assets/images/User.png";
 }
 

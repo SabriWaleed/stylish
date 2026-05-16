@@ -23,9 +23,7 @@ class OnboardingSkipButton extends StatelessWidget {
         },
         child: Text(
           'Skip',
-          style: AppTextStyle.montserratSemiBold18w600.copyWith(
-            color: AppColors.secondaryColor,
-          ),
+          style: AppTextStyles.bold18_2.copyWith(color: AppColors.onBackground),
         ),
       ),
     );

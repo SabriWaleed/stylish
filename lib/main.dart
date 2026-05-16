@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        locale: const Locale('ar'),
+        locale: const Locale('en'),
         localizationsDelegates: [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

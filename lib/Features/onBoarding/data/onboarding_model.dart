@@ -20,13 +20,13 @@ List<OnBoardingModel> onBoardingData = [
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
   ),
   OnBoardingModel(
-    image: Assets.assetsImagesOnboarding3,
+    image: Assets.assetsImagesOnboarding2,
     title: 'Make Payment',
     subTitle:
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
   ),
   OnBoardingModel(
-    image: Assets.assetsImagesOnboarding2,
+    image: Assets.assetsImagesOnboarding3,
     title: 'Get Your Order',
     subTitle:
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',

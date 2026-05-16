@@ -1,6 +1,8 @@
+import 'package:ecommerce_project/Core/utils/app_colors.dart';
 import 'package:ecommerce_project/Core/utils/app_text_style.dart';
 import 'package:ecommerce_project/Features/onBoarding/data/onboarding_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageViewBody extends StatelessWidget {
   const PageViewBody({
@@ -16,10 +18,10 @@ class PageViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 32),
+        SizedBox(height: 110.h),
         Container(
-          height: 290,
-          width: 345,
+          height: 300.h,
+          width: 300.w,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(onBoardingModel.image),
@@ -27,26 +29,19 @@ class PageViewBody extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 15.h),
         Text(
           onBoardingModel.title,
           textAlign: TextAlign.center,
-          style: AppTextStyle.montserratExtraBold24w800.copyWith(
-            fontWeight: FontWeight.w700,
+          style: AppTextStyles.extraBold24.copyWith(
+            color: AppColors.onBackground,
           ),
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 10.h),
         Text(
           onBoardingModel.subTitle,
           textAlign: TextAlign.center,
-          style: AppTextStyle.montserratSemiBold14w600.copyWith(
-            fontSize: 16,
-            fontWeight: FontWeight.w300,
-          ),
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+          style: AppTextStyles.bold14.copyWith(color: AppColors.textGrey),
         ),
       ],
     );

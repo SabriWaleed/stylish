@@ -14,7 +14,6 @@ class OnBoardingBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 550,
       child: PageView.builder(
         onPageChanged: onPageChanged,
         physics: BouncingScrollPhysics(),

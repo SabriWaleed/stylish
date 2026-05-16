@@ -12,19 +12,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class SignUpView extends StatefulWidget {
+  const SignUpView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignUpViewState extends State<SignUpView> {
   final GlobalKey<FormState> formKey = GlobalKey();
 
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +41,15 @@ class _LoginViewState extends State<LoginView> {
                 child: Column(
                   children: [
                     Align(
-                      alignment: AlignmentGeometry.topLeft,
+                      alignment: Alignment.topLeft,
                       child: Text(
-                        "Welcome\nBack!",
+                        "Create an\naccount",
                         style: AppTextStyles.bold36.copyWith(
                           color: AppColors.onBackground,
                         ),
                       ),
                     ),
-                    SizedBox(height: 36.h),
+                    SizedBox(height: 33.h),
                     TextFormFieldWidget(
                       iconLink: Assets.assetsImagesUser,
                       hintText: "Username or Email",
@@ -66,26 +68,55 @@ class _LoginViewState extends State<LoginView> {
 
                       obscureText: true,
                     ),
-                    SizedBox(height: 9.h),
+                    SizedBox(height: 31.h),
+                    TextFormFieldWidget(
+                      iconLink: Assets.assetsImagesLock,
+                      hintText: "ConfirmPassword",
+                      controller: confirmPasswordController,
+                      validator: (value) =>
+                          validatePasswordField(value?.trim()),
+                      obscureText: true,
+                    ),
+                    SizedBox(height: 19.h),
                     Align(
-                      alignment: AlignmentGeometry.centerRight,
-                      child: TextButtonWidget(
-                        text: '"Forgot Password?"',
-                        onPressed: () {
-                          context.go(AppRoutes.kAuthForgetPasswordView);
-                        },
+                      alignment: Alignment.centerLeft,
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "By clicking the ",
+                              style: AppTextStyles.regular12_2.copyWith(
+                                color: AppColors.strongGrey,
+                              ),
+                            ),
+
+                            WidgetSpan(
+                              child: TextButtonWidget(
+                                text: "Registert",
+                                onPressed: () {},
+                              ),
+                            ),
+
+                            TextSpan(
+                              text: " button, you agree\nto the public offer",
+                              style: AppTextStyles.regular12_2.copyWith(
+                                color: AppColors.strongGrey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    SizedBox(height: 52.h),
+                    SizedBox(height: 38.h),
                     ElevatedButtonWidget(
-                      label: 'Login',
+                      label: 'Create Account',
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           print("Success");
                         }
                       },
                     ),
-                    SizedBox(height: 75.h),
+                    SizedBox(height: 40.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -104,16 +135,15 @@ class _LoginViewState extends State<LoginView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Create An Account ",
+                          "I Already Have an Account ",
                           style: AppTextStyles.regular14_4.copyWith(
                             color: AppColors.strongGrey,
                           ),
                         ),
                         UnderlineButtonWidget(
-                          label: "Sign Up",
+                          label: "Login",
                           onPressed: () {
-                            context.go(AppRoutes.kAuthSignupView);
-                            return;
+                            context.go(AppRoutes.kAuthLoginView);
                           },
                         ),
                       ],
