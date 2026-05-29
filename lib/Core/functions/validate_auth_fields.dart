@@ -19,3 +19,17 @@ String? validatePasswordField(String? value) {
 
   return null;
 }
+
+String? validateNameField(String? value) {
+  if (value == null || value.trim().isEmpty) {
+    return 'Please enter name';
+  }
+  return null;
+}
+
+String? validateConfirmPasswordField(String? confirm, String? password) {
+  final passwordError = validatePasswordField(confirm);
+  if (passwordError != null) return passwordError;
+  if (confirm != password) return 'Passwords do not match';
+  return null;
+}
