@@ -15,12 +15,12 @@ Future<void> setupGetIt() async {
   final prefs = await SharedPreferences.getInstance();
   getit.registerLazySingleton<SharedPreferencesService>(
     () => SharedPreferencesService(prefs),
-  );
+  ); //علشان امل سنجل تون للشيرد بريفرنسس واستخدمه  علي  مدار  الابلكيشن  كله
 
   // Register SecureStorageService
   getit.registerLazySingleton<SecureStorageService>(
     () => SecureStorageService(),
-  );
+  ); //علشان امل سنجل تون للسيكيور استوردج واستخدمه  علي  مدار  الابلكيشن  كله
 
   // Register DioConsumer as a singleton
   getit.registerLazySingleton<DioConsumer>(() => DioConsumer(dio: Dio()));
