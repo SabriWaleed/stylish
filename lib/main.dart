@@ -24,6 +24,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // ده علشان سطر الكود ال في الانترسيبتور  ال هو الاوث ايفنت باس ال بيعملليسن علي الايفنت
   late StreamSubscription<AuthEvent>
   _authSubscription; // علشان محتاج اسمع لل ايفنتس ولازم الويجت تبقا سيتفول علشان اعرف اسمع لل ايفنت
   @override

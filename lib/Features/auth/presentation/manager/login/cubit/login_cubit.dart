@@ -15,6 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
       final result = await authRepo.login(email: email, password: password);
 
       result.fold(
+        // تبع باكدج دارت دوت زييد
         (failure) {
           emit(LoginFailure(errorMessage: failure.errorMessage));
         },

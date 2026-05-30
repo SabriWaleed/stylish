@@ -8,7 +8,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 // الملف ده هتاخده كوبي بيست في اي مشروع ولكن هتغير حاجات بسيطه حسب الداتا ال رجعهالك
 class DioConsumer implements ApiConsumer {
   final Dio dio;
-
+  //  ده علشان  لما احب مثلا اغير طريقه الديوو  لريتروفيت  اقوم مغير في الملف ده بس فاكدا كلين كود وجميل جدا
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = ApiEndpoints.baseUrl;
     dio.interceptors.add(ApiInterceptors(dio));
