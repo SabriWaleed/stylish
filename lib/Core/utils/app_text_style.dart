@@ -61,7 +61,7 @@ abstract class AppTextStyles {
 
   // from: Home page
   static TextStyle extraBold18 = GoogleFonts.libreCaslonText(
-    fontSize: 18.sp,
+    fontSize: 40.sp,
     fontWeight: FontWeight.w700,
     height: 1.22.h,
   );
