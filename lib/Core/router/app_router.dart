@@ -6,13 +6,23 @@ import 'package:ecommerce_project/Features/auth/presentation/login_view.dart';
 import 'package:ecommerce_project/Features/auth/presentation/manager/login/cubit/login_cubit.dart';
 import 'package:ecommerce_project/Features/auth/presentation/manager/register/cubit/register_cubit.dart';
 import 'package:ecommerce_project/Features/auth/presentation/signup_view.dart';
+import 'package:ecommerce_project/Features/home/presentation/home_view.dart';
 import 'package:ecommerce_project/Features/onBoarding/presentation/on_boarding_view.dart';
+import 'package:ecommerce_project/Features/splach/presentation/splach_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static final router = GoRouter(
     routes: [
+      GoRoute(
+        path: AppRoutes.kSplachView,
+        builder: (context, state) => const SplachView(),
+      ),
+      GoRoute(
+        path: AppRoutes.kHomeView,
+        builder: (context, state) => const HomeView(),
+      ),
       GoRoute(
         path: AppRoutes.kOnboardingView,
         builder: (context, state) => const OnBoardingView(),
