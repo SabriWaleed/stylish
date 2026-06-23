@@ -42,7 +42,7 @@ class DioConsumer implements ApiConsumer {
     } on DioException catch (e) {
       throw ServerFailure.fromDioException(e);
     } catch (e) {
-      throw ServerFailure(errorMessage: 'Unexpected error: $e');
+      throw ServerFailure(errorMessage: 'Unexpected error: $e', message: null);
     }
   }
 
@@ -65,7 +65,7 @@ class DioConsumer implements ApiConsumer {
     } on DioException catch (e) {
       throw ServerFailure.fromDioException(e);
     } catch (e) {
-      throw ServerFailure(errorMessage: 'Unexpected error: $e');
+      throw ServerFailure(errorMessage: 'Unexpected error: $e', message: null);
     }
   }
 
@@ -88,7 +88,7 @@ class DioConsumer implements ApiConsumer {
     } on DioException catch (e) {
       throw ServerFailure.fromDioException(e);
     } catch (e) {
-      throw ServerFailure(errorMessage: 'Unexpected error: $e');
+      throw ServerFailure(errorMessage: 'Unexpected error: $e', message: null);
     }
   }
 
@@ -103,7 +103,7 @@ class DioConsumer implements ApiConsumer {
     } on DioException catch (e) {
       throw ServerFailure.fromDioException(e);
     } catch (e) {
-      throw ServerFailure(errorMessage: 'Unexpected error: $e');
+      throw ServerFailure(errorMessage: 'Unexpected error: $e', message: null);
     }
   }
 }

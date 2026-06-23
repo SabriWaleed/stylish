@@ -38,7 +38,7 @@ class AuthRepoImplementation implements AuthRepo {
       return Right(response); // لو كل حاجة تمام: رجع البيانات في الرايت
     } catch (e) {
       if (e is Failure) return Left(e);
-      return Left(ServerFailure(errorMessage: e.toString()));
+      return Left(ServerFailure(errorMessage: e.toString(), message: null));
     }
   }
 
@@ -65,12 +65,15 @@ class AuthRepoImplementation implements AuthRepo {
         return Right(response);
       } else {
         return Left(
-          ServerFailure(errorMessage: 'Invalid tokens received from server.'),
+          ServerFailure(
+            errorMessage: 'Invalid tokens received from server.',
+            message: null,
+          ),
         );
       }
     } catch (e) {
       if (e is Failure) return Left(e);
-      return Left(ServerFailure(errorMessage: e.toString()));
+      return Left(ServerFailure(errorMessage: e.toString(), message: null));
     }
   }
 }

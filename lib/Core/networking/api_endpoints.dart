@@ -4,4 +4,9 @@ class ApiEndpoints {
   static const String login = 'auth/login';
   static const String refreshToken = 'auth/refresh-token';
   static const String profile = 'auth/profile';
+  static const String product = 'products';
+  static const String categories = 'categories';
+  static String productByCategory(String categoryId) {
+    return 'products/?categoryId=$categoryId';
+  }
 }

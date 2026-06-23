@@ -6,16 +6,25 @@ abstract class Failure {
 }
 
 class ServerFailure extends Failure {
-  ServerFailure({required super.errorMessage});
+  ServerFailure({required super.errorMessage, required message});
   factory ServerFailure.fromDioException(DioException dioException) {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailure(errorMessage: 'Connection Time Out with Server');
+        return ServerFailure(
+          errorMessage: 'Connection Time Out with Server',
+          message: null,
+        );
       case DioExceptionType.sendTimeout:
-        return ServerFailure(errorMessage: 'Send Time Out with Server');
+        return ServerFailure(
+          errorMessage: 'Send Time Out with Server',
+          message: null,
+        );
 
       case DioExceptionType.receiveTimeout:
-        return ServerFailure(errorMessage: 'Recieve Time Out with Server');
+        return ServerFailure(
+          errorMessage: 'Recieve Time Out with Server',
+          message: null,
+        );
       case DioExceptionType.badCertificate:
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
@@ -23,37 +32,54 @@ class ServerFailure extends Failure {
           dioException.response!.data,
         );
       case DioExceptionType.cancel:
-        return ServerFailure(errorMessage: 'Request Canceled');
+        return ServerFailure(errorMessage: 'Request Canceled', message: null);
       case DioExceptionType.connectionError:
       case DioExceptionType.unknown:
         if (dioException.message!.contains('SocketException')) {
-          return ServerFailure(errorMessage: 'No Internet Connection');
+          return ServerFailure(
+            errorMessage: 'No Internet Connection',
+            message: null,
+          );
         } else {
-          return ServerFailure(errorMessage: 'Unexpected Error, Try Again');
+          return ServerFailure(
+            errorMessage: 'Unexpected Error, Try Again',
+            message: null,
+          );
         }
     }
   }
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(errorMessage: _extractMessage(response));
+      return ServerFailure(
+        errorMessage: _extractMessage(response),
+        message: null,
+      );
     } else if (statusCode == 404) {
       return ServerFailure(
         errorMessage: 'Your Requested Content Not Found Try Again Later',
+        message: null,
       );
     } else if (statusCode == 422) {
       // Handle 422 Unprocessable Entity with error details
       if (response is Map<String, dynamic>) {
         final errorMessage = _parseValidationErrors(response);
-        return ServerFailure(errorMessage: errorMessage);
+        return ServerFailure(errorMessage: errorMessage, message: null);
       }
-      return ServerFailure(errorMessage: 'Validation error occurred');
+      return ServerFailure(
+        errorMessage: 'Validation error occurred',
+        message: null,
+      );
     } else if (statusCode == 500) {
       return ServerFailure(
         errorMessage: 'Internal Server Error Try Again Later',
+        message: null,
       );
     } else {
-      return ServerFailure(errorMessage: _extractMessage(response));
+      return ServerFailure(
+        errorMessage: _extractMessage(response),
+        message: null,
+      );
     }
   }
 

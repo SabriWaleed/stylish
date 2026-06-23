@@ -4,6 +4,8 @@ import 'package:ecommerce_project/Core/services/secure_storage_service.dart';
 import 'package:ecommerce_project/Core/services/shared_preferences_service.dart';
 import 'package:ecommerce_project/Features/auth/data/repos/auth_repo.dart';
 import 'package:ecommerce_project/Features/auth/data/repos/auth_repo_implementation.dart';
+import 'package:ecommerce_project/Features/home/data/repos/products_repo.dart';
+import 'package:ecommerce_project/Features/home/data/repos/products_repo_implementation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,5 +34,8 @@ Future<void> setupGetIt() async {
       getit<SecureStorageService>(),
       getit<SharedPreferencesService>(),
     ),
+  );
+  getit.registerLazySingleton<HomeRepo>(
+    () => ProductsRepoImplementation(getit<DioConsumer>()),
   );
 }

@@ -6,7 +6,11 @@ import 'package:ecommerce_project/Features/auth/presentation/login_view.dart';
 import 'package:ecommerce_project/Features/auth/presentation/manager/login/cubit/login_cubit.dart';
 import 'package:ecommerce_project/Features/auth/presentation/manager/register/cubit/register_cubit.dart';
 import 'package:ecommerce_project/Features/auth/presentation/signup_view.dart';
+import 'package:ecommerce_project/Features/home/data/repos/products_repo.dart';
+import 'package:ecommerce_project/Features/home/presentation/category_view.dart';
 import 'package:ecommerce_project/Features/home/presentation/home_view.dart';
+import 'package:ecommerce_project/Features/home/presentation/manager/categories/category_cubit.dart';
+import 'package:ecommerce_project/Features/home/presentation/manager/producs/product_cubit.dart';
 import 'package:ecommerce_project/Features/onBoarding/presentation/on_boarding_view.dart';
 import 'package:ecommerce_project/Features/splach/presentation/splach_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +25,27 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.kHomeView,
-        builder: (context, state) => const HomeView(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => ProductsCubit(homeRepo: getit<HomeRepo>()),
+            ),
+            BlocProvider(
+              create: (context) => CategoriesCubit(homeRepo: getit<HomeRepo>()),
+            ),
+          ],
+          child: const HomeView(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.kProductListByCategory,
+        builder: (context, state) {
+          final categoryId = state.uri.queryParameters['categoryId'] ?? '';
+          return BlocProvider(
+            create: (_) => ProductsCubit(homeRepo: getit<HomeRepo>()),
+            child: CategoryView(categoryId: categoryId),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.kOnboardingView,
@@ -42,6 +66,7 @@ abstract class AppRouter {
           child: const SignUpView(),
         ),
       ),
+
       GoRoute(
         path: AppRoutes.kAuthForgetPasswordView,
         builder: (context, state) => const ForgetPasswordView(),
