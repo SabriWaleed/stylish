@@ -6,4 +6,5 @@ abstract class AppRoutes {
   static const String kAuthLoginView = '/Login';
   static const String kAuthSignupView = '/Signup';
   static const String kAuthForgetPasswordView = '/ForgetPassword';
+  static const String kProductListByCategory = '/ProducyListByCategory';
 }

@@ -65,11 +65,21 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w700,
     height: 1.22.h,
   );
+  static TextStyle extraBold19 = GoogleFonts.libreCaslonText(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    height: 1.22.h,
+  );
 
   // from: Sucessfully
   static TextStyle semiBold18 = GoogleFonts.montserrat(
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
+    height: 1.50.h,
+  );
+  static TextStyle semiBold19 = GoogleFonts.montserrat(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w600,
     height: 1.50.h,
   );
 
@@ -212,6 +222,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     height: 1.33.h,
   );
+  static TextStyle semiBold122 = GoogleFonts.montserrat(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w600,
+    height: 1.33.h,
+  );
 
   // from: Profile
   static TextStyle semiBold12_2 = GoogleFonts.plusJakartaSans(
@@ -237,6 +252,11 @@ abstract class AppTextStyles {
   // from: Profile
   static TextStyle regular12_2 = GoogleFonts.montserrat(
     fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    height: 1.22.h,
+  );
+  static TextStyle regular12_4 = GoogleFonts.montserrat(
+    fontSize: 16.sp,
     fontWeight: FontWeight.w400,
     height: 1.22.h,
   );
