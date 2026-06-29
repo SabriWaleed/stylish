@@ -27,13 +27,28 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   List<Products> allProducts = [];
   List<Category> allCategory = [];
-
+  final ScrollController _scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
     BlocProvider.of<ProductsCubit>(context).getProducts();
-
+    _scrollController.addListener(_onScroll);
     BlocProvider.of<CategoriesCubit>(context).getCategories();
+  }
+
+  void _onScroll() {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    const threshold = 200;
+    if (currentScroll >= maxScroll - threshold) {
+      BlocProvider.of<ProductsCubit>(context).getMoreProducts();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,6 +57,8 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: AppColors.backgroundTextField,
       appBar: AppbarWidget(),
       body: SingleChildScrollView(
+        controller:
+            _scrollController, // بحطها في المكان المسؤول عن الاسكرول هنا حطيتها في السنجل شايلد اسكرول فيوو علشان هو المسؤول عن الاسكرول
         child: Column(
           children: [
             Padding(padding: EdgeInsets.all(16.w), child: SearchWidget()),
@@ -94,14 +111,26 @@ class _HomeViewState extends State<HomeView> {
               },
               builder: (context, state) {
                 if (state is ProductsLoading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return SizedBox(
+                    height: 200,
+                    child: const Center(child: CircularProgressIndicator()),
+                  );
                 } else if (state is ProductsError) {
                   return Center(child: Text(state.errormessage));
-                } else if (state is ProductsLoaded) {
-                  if (state.products.isEmpty) {
+                } else if (state is ProductsLoaded ||
+                    state is ProductPagenationLoading ||
+                    state is ProductPagenationFailure) {
+                  final products = switch (state) {
+                    ProductsLoaded s => s.products,
+                    ProductPagenationLoading s => s.currentProducts,
+                    ProductPagenationFailure s => s.currentProducts,
+                    _ => <Products>[],
+                  };
+
+                  if (products.isEmpty) {
                     return const Center(child: Text('No Products Found'));
                   }
-                  return GridViewWidget(allProducts: state.products);
+                  return GridViewWidget(allProducts: products);
                 } else {
                   return GridViewWidget(allProducts: allProducts);
                 }

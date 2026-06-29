@@ -4,7 +4,10 @@ import 'package:ecommerce_project/Features/home/data/models/product_model.dart';
 import 'package:ecommerce_project/Features/home/data/models/category_model.dart';
 
 abstract class HomeRepo {
-  Future<Either<Failure, List<Products>>> getAllProducts();
+  Future<Either<Failure, List<Products>>> getAllProducts({
+    required int offset,
+    required int limit,
+  });
   Future<Either<Failure, List<Category>>> getAllCategories();
   Future<Either<Failure, List<Products>>> getProductsByCategory({
     required String categoryId,
