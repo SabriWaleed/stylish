@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerce_project/Core/functions/validate_auth_fields.dart';
 import 'package:ecommerce_project/Core/utils/app_colors.dart';
 import 'package:ecommerce_project/Core/utils/app_text_style.dart';
@@ -72,7 +74,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       label: 'Submit',
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          print("Success");
+                          log("Success");
                         }
                       },
                     ),

@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class GridViewWidget extends StatelessWidget {
   const GridViewWidget({super.key, required this.allProducts});
   final List<Products> allProducts;
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -32,109 +33,106 @@ class GridViewWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(12),
-                  ),
-                  child: Image.network(
-                    (product.images != null && product.images!.isNotEmpty)
-                        ? product.images![0].replaceAll(
-                            RegExp(r'^\["|"\]$'),
-                            '',
-                          )
-                        : 'https://placehold.co/600x400.png',
-                    height: 150.h,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return ColoredBox(
-                        color: Colors.grey[200]!,
-                        child: const Icon(
-                          Icons.image_not_supported,
-                          size: 50,
-                          color: Colors.grey,
-                        ),
-                      );
-                    },
-                  ),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        product.title ?? 'No Title',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.semiBold12.copyWith(
-                          color: AppColors.onBackground,
-                        ),
+                child: Image.network(
+                  (product.images != null && product.images!.isNotEmpty)
+                      ? product.images![0].replaceAll(RegExp(r'^\["|"\]$'), '')
+                      : 'https://placehold.co/600x400.png',
+                  height: 150.h,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return ColoredBox(
+                      color: Colors.grey[200]!,
+                      child: const Icon(
+                        Icons.image_not_supported,
+                        size: 50,
+                        color: Colors.grey,
                       ),
-
-                      const SizedBox(height: 4),
-                      Text(
-                        product.description ?? 'No Description',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.regular10.copyWith(
-                          color: AppColors.onBackground,
-                        ),
-                      ),
-
-                      const SizedBox(height: 8),
-
-                      Text(
-                        '₹${product.price}',
-                        style: AppTextStyles.semiBold12_4.copyWith(
-                          color: AppColors.onBackground,
-                        ),
-                      ),
-
-                      // Row(
-                      //   children: [
-                      //     Text(
-                      //       '₹${"2499"}',
-                      //       style: const TextStyle(
-                      //         decoration:
-                      //             TextDecoration.lineThrough,
-                      //         color: Colors.grey,
-                      //       ),
-                      //     ),
-                      //     SizedBox(width: 8.w),
-                      //     Text(
-                      //       '${"40"}% Off',
-                      //       style: const TextStyle(
-                      //         color: Colors.red,
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      SizedBox(height: 20.h),
-
-                      Row(
-                        children: [
-                          const Icon(Icons.star, size: 16, color: Colors.amber),
-                          const Icon(Icons.star, size: 16, color: Colors.amber),
-                          const Icon(Icons.star, size: 16, color: Colors.amber),
-                          const Icon(Icons.star, size: 16, color: Colors.amber),
-                          const Icon(
-                            Icons.star_half,
-                            size: 16,
-                            color: Colors.amber,
-                          ),
-                          const SizedBox(width: 4),
-                          // Text(
-                          //   '${product.ratingCount}',
-                          //   style: const TextStyle(color: Colors.grey),
-                          // ),
-                        ],
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.title ?? 'No Title',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.semiBold12.copyWith(
+                        color: AppColors.onBackground,
+                      ),
+                    ),
+
+                    const SizedBox(height: 4),
+                    Text(
+                      product.description ?? 'No Description',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.regular10.copyWith(
+                        color: AppColors.onBackground,
+                      ),
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    Text(
+                      '₹${product.price}',
+                      style: AppTextStyles.semiBold12_4.copyWith(
+                        color: AppColors.onBackground,
+                      ),
+                    ),
+
+                    // Row(
+                    //   children: [
+                    //     Text(
+                    //       '₹${"2499"}',
+                    //       style: const TextStyle(
+                    //         decoration:
+                    //             TextDecoration.lineThrough,
+                    //         color: Colors.grey,
+                    //       ),
+                    //     ),
+                    //     SizedBox(width: 8.w),
+                    //     Text(
+                    //       '${"40"}% Off',
+                    //       style: const TextStyle(
+                    //         color: Colors.red,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    SizedBox(height: 20.h),
+
+                    Row(
+                      children: [
+                        const Icon(Icons.star, size: 16, color: Colors.amber),
+                        const Icon(Icons.star, size: 16, color: Colors.amber),
+                        const Icon(Icons.star, size: 16, color: Colors.amber),
+                        const Icon(Icons.star, size: 16, color: Colors.amber),
+                        const Icon(
+                          Icons.star_half,
+                          size: 16,
+                          color: Colors.amber,
+                        ),
+                        const SizedBox(width: 4),
+                        // Text(
+                        //   '${product.ratingCount}',
+                        //   style: const TextStyle(color: Colors.grey),
+                        // ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

@@ -26,9 +26,15 @@ class ProductsRepoImplementation implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<Products>>> getAllProducts() async {
+  Future<Either<Failure, List<Products>>> getAllProducts({
+    required int offset,
+    required int limit,
+  }) async {
     try {
-      final response = await apiConsumer.get(ApiEndpoints.product);
+      final response = await apiConsumer.get(
+        ApiEndpoints.product,
+        queryParameters: {'offset': offset, 'limit': limit},
+      );
       List<Products> products = [];
       for (var product in response) {
         products.add(Products.fromJson(product));
